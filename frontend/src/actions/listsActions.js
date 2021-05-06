@@ -12,7 +12,7 @@ export const addList = (title, boardId) => {
   console.log("add a list in listsAction.js");
   await axios({
     method: 'post',
-    url: 'http://127.0.0.1:8000/list_api/lists/',
+    url: '/list_api/lists/',
     data: {
       title: title,
       id: "",
@@ -71,7 +71,7 @@ export const reorderLists = (reorderedLists, startIndex) => {
   console.log("reorderLists");
   axios({
     method: 'post',
-    url: 'http://127.0.0.1:8000/list_api/lists/reorder-lists/',
+    url: '/list_api/lists/reorder-lists/',
     data: {
       reorderedLists: reorderedLists,
       startIndex: startIndex,
@@ -89,7 +89,7 @@ export const getLists = (boardId) => {
   return async (dispatch, getState) => {
     console.log("get lists in listsAction.js");
     await axios
-      .get('http://127.0.0.1:8000/list_api/lists/'+boardId+'/get-lists/', tokenConfig(getState))
+      .get('/list_api/lists/'+boardId+'/get-lists/', tokenConfig(getState))
       .then((res) => {
         dispatch({
           type: CONSTANTS.GET_LISTS,
@@ -105,7 +105,7 @@ export const getListsOrder = (boardId) => {
   return async (dispatch, getState) => {
   console.log("getListsOrder in listsAction.js")
   await axios
-    .get('http://127.0.0.1:8000/list_api/listsOrder/'+boardId+'/', tokenConfig(getState))
+    .get('/list_api/listsOrder/'+boardId+'/', tokenConfig(getState))
     .then((res) => {
       dispatch({
         type: CONSTANTS.GET_LISTSORDER,
@@ -125,7 +125,7 @@ export const deleteList = (listID) => {
   return async (dispatch, getState) => {
     console.log("delete a List in listsAction.js")
     await axios
-      .delete('http://127.0.0.1:8000/list_api/lists/'+pk[1]+'/', tokenConfig(getState))
+      .delete('/list_api/lists/'+pk[1]+'/', tokenConfig(getState))
       .then((res) => {
         dispatch({
           type: CONSTANTS.DELETE_LIST,
@@ -147,7 +147,7 @@ export const editListTitle = (listID, title) => {
     console.log("edit List's title in listsAction.js")
     await axios({
         method: 'PATCH',
-        url: 'http://127.0.0.1:8000/list_api/lists/'+pk[1]+'/',
+        url: '/list_api/lists/'+pk[1]+'/',
         data: {
           title: title,
           type: "title",

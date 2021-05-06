@@ -8,7 +8,7 @@ export const loadUser = () => (dispatch, getState) => {
   dispatch({ type: CONSTANTS.USER_LOADING });
 
   axios
-    .get('http://127.0.0.1:8000/users_api/auth/user', tokenConfig(getState))
+    .get('/users_api/auth/user', tokenConfig(getState))
     .then((res) => {
       dispatch({
         type: CONSTANTS.USER_LOADED,
@@ -36,7 +36,7 @@ export const login = (username, password) => (dispatch) => {
   const body = JSON.stringify({ username, password });
 
   axios
-    .post('http://127.0.0.1:8000/users_api/auth/login', body, config)
+    .post('/users_api/auth/login', body, config)
     .then((res) => {
       dispatch({
         type: CONSTANTS.LOGIN_SUCCESS,
@@ -64,7 +64,7 @@ export const register = ({ username, password, email }) => (dispatch) => {
   const body = JSON.stringify({ username, email, password });
 
   axios
-    .post('http://127.0.0.1:8000/users_api/auth/register', body, config)
+    .post('/users_api/auth/register', body, config)
     .then((res) => {
       dispatch({
         type: CONSTANTS.REGISTER_SUCCESS,
@@ -82,7 +82,7 @@ export const register = ({ username, password, email }) => (dispatch) => {
 // LOGOUT USER
 export const logout = () => (dispatch, getState) => {
   axios
-    .post('http://127.0.0.1:8000/users_api/auth/logout/', null, tokenConfig(getState))
+    .post('/users_api/auth/logout/', null, tokenConfig(getState))
     .then((res) => {
       dispatch({ type: 'CLEAR_LEADS' });
       dispatch({

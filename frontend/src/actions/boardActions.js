@@ -8,7 +8,7 @@ export const getBoardsList = () => {
   return async (dispatch, getState) => {
     console.log("get Boards List in boardsAction.js");
     await axios
-      .get(`http://127.0.0.1:8000/board_api/boards`, tokenConfig(getState))
+      .get(`/board_api/boards`, tokenConfig(getState))
       .then((res) => {
         dispatch({
           type: CONSTANTS.GET_BOARDSLIST,
@@ -24,7 +24,7 @@ export const getBoardsOrder = () => {
   return async (dispatch, getState) => {
   console.log("getBoardsOrder in boardAction.js")
   await axios
-    .get(`http://127.0.0.1:8000/board_api/boardsOrder`, tokenConfig(getState))
+    .get(`/board_api/boardsOrder`, tokenConfig(getState))
     .then((res) => {
       dispatch({
         type: CONSTANTS.GET_BOARDSORDER,
@@ -43,7 +43,7 @@ export const addBoard = (title) => {
   return async (dispatch, getState) => {
   await axios({
     method: 'post',
-    url: 'http://127.0.0.1:8000/board_api/boards/',
+    url: '/board_api/boards/',
     data: {
       title: title,
       id: "",
@@ -68,7 +68,7 @@ export const getBoard = (boardID) => {
   console.log(boardID)
   return async (dispatch, getState) => {
   await axios
-    .get('http://127.0.0.1:8000/board_api/boards/'+boardID+'/get-board/', tokenConfig(getState))
+    .get('/board_api/boards/'+boardID+'/get-board/', tokenConfig(getState))
     .then((res) => {
       dispatch({
         type: CONSTANTS.GET_BOARD,

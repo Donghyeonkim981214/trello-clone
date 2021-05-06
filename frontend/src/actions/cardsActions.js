@@ -13,7 +13,7 @@ export const addCard = (listID, text, boardId) => {
   console.log(boardId);
   await axios({
     method: 'post',
-    url: 'http://127.0.0.1:8000/card_api/cards/',
+    url: '/card_api/cards/',
     data: {
       listId: listID,
       task: text,
@@ -40,7 +40,7 @@ export const getCards = (boardId) => {
   return async (dispatch, getState) => {
     console.log("get cards in cardsAction.js");
     await axios
-      .get('http://127.0.0.1:8000/card_api/cards/'+boardId+'/get-cards/', tokenConfig(getState))
+      .get('/card_api/cards/'+boardId+'/get-cards/', tokenConfig(getState))
       .then((res) => {
         dispatch({
           type: CONSTANTS.GET_CARDS,
@@ -60,7 +60,7 @@ export const editCardTask = (cardId, task) => {
     console.log("edit Card's task in cardsAction.js");
     await axios({
       method: 'PATCH',
-      url: 'http://127.0.0.1:8000/card_api/cards/'+pk[1]+'/',
+      url: '/card_api/cards/'+pk[1]+'/',
       data: {
         task: task,
         type: "task",
@@ -85,7 +85,7 @@ export const deleteCard = (id) => {
   return async (dispatch, getState) => {
     console.log("delete a Card in cardsAction.js")
     await axios
-      .delete('http://127.0.0.1:8000/card_api/cards/'+pk[1]+'/', tokenConfig(getState))
+      .delete('/card_api/cards/'+pk[1]+'/', tokenConfig(getState))
       .then((res) => {
         dispatch({
           type: CONSTANTS.DELETE_CARD,
@@ -105,7 +105,7 @@ export const sortCards = (sortedCards, startIndex) => {
   console.log("sort cards in same list");
   axios({
     method: 'post',
-    url: 'http://127.0.0.1:8000/card_api/cards/reorder-cards/',
+    url: '/card_api/cards/reorder-cards/',
     data: {
       reorderedCards: sortedCards,
       startIndex: startIndex,
@@ -143,7 +143,7 @@ export const sortCardsAnotherList = (
   console.log("move card to another list");
   axios({
     method: 'post',
-    url: 'http://127.0.0.1:8000/card_api/cards/move-card/',
+    url: '/card_api/cards/move-card/',
     data: {
       "droppableIdStart": startListId[1],
       "droppableIdEnd": endListId[1],

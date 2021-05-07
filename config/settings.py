@@ -21,12 +21,12 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 's4thx3lp^_61*aadh4m7nuh=govgr)da&+-wxg)(i0u=h87v6*'
+SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['.elasticbeanstalk.com', '192.168.56.101', 'localhost', '127.0.0.1', ]
 
 
 # Application definition
@@ -40,7 +40,7 @@ DJANGO_APPS = [
     "django.contrib.staticfiles",
 ]
 
-THIRD_PARTY_APPS = ["corsheaders", "rest_framework", "knox"]
+THIRD_PARTY_APPS = ["corsheaders", "rest_framework", "knox", "storages"]
 
 PROJECT_APPS = [
     "boards",
@@ -102,10 +102,18 @@ WSGI_APPLICATION = 'config.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': os.environ.get('DATABASE_NAME'),
+        'USER': os.environ.get('DATABASE_USER'),
+        'PASSWORD': os.environ.get('DATABASE_PASSWORD'),
+        'HOST': 'drello-mysql-8020.ctq1yaril3q0.ap-northeast-2.rds.amazonaws.com',
+        'PORT': '3306',
+        'OPTOINS': {
+            'init_command': "SET sql_mode='STRICT_TRANS_TABLES'",
+        },
     }
 }
+
 
 
 # Password validation
@@ -150,6 +158,19 @@ STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'frontend/build/static')
 ]
 
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:3000",
 ]
+
+STATICFILES_STORAGE = 'config.storage.S3StaticStorage'
+DEFAULT_FILE_STORAGE = 'config.storage.S3MediaStorage'
+
+AWS_ACCESS_KEY_ID = os.environ.get('AWS_ACCESS_KEY_ID')
+AWS_SECRET_ACCESS_KEY = os.environ.get('AWS_SECRET_ACCESS_KEY')
+AWS_S3_REGION_NAME = 'ap-northeast-2'
+AWS_STORAGE_BUCKET_NAME = 'drello-bucket'
+AWS_S3_CUSTOM_DOMAIN = f"{AWS_STORAGE_BUCKET_NAME}.s3.{AWS_S3_REGION_NAME}.amazonaws.com"
+AWS_DEFAULT_ACL = 'public-read'

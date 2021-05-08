@@ -21,12 +21,12 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 's4thx3lp^_61*aadh4m7nuh=govgr)da&+-wxg)(i0u=h87v6*'
+SECRET_KEY = '5d+a&4^zq^io6c5sn=*o=(mjw6lgy1r559iv%%-@d2ottsb_0e'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['.elasticbeanstalk.com', '192.168.56.101', 'localhost', '127.0.0.1', ]
 
 
 # Application definition
@@ -40,7 +40,7 @@ DJANGO_APPS = [
     "django.contrib.staticfiles",
 ]
 
-THIRD_PARTY_APPS = ["corsheaders", "rest_framework", "knox"]
+THIRD_PARTY_APPS = ["corsheaders", "rest_framework", "knox", "storages"]
 
 PROJECT_APPS = [
     "boards",
@@ -113,6 +113,7 @@ DATABASES = {
         },
     }
 }
+
 
 
 # Password validation

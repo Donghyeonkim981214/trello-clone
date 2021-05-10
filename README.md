@@ -13,7 +13,7 @@
 ## 1. 프로젝트 소개
 * Drello
   본 프로젝트는 Trello를 클론 코딩하는 프로젝트입니다.
-  Web url: http://todolist-env.eba-smsu6wyz.ap-northeast-2.elasticbeanstalk.com/
+  Web url: http://drello-env.eba-jj6gw9st.ap-northeast-2.elasticbeanstalk.com/
 * 개발환경
   * os: windows10
   * editor: visual studio code

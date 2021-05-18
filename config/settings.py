@@ -21,10 +21,10 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '5d+a&4^zq^io6c5sn=*o=(mjw6lgy1r559iv%%-@d2ottsb_0e'
+SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = TRUE
 
 ALLOWED_HOSTS = ['.elasticbeanstalk.com', '192.168.56.101', 'localhost', '127.0.0.1', ]
 
@@ -67,7 +67,7 @@ MIDDLEWARE = [
 ]
 
 CORS_ALLOWED_ORIGINS = [
-    "http://localhost:3000",
+    "http://localhost:3000/",
 ]
 
 CORS_ALLOW_CREDENTIALS = True
@@ -103,9 +103,9 @@ WSGI_APPLICATION = 'config.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'test',
-        'USER': 'admin',
-        'PASSWORD': 'tuna981214',
+        'NAME': os.environ.get('DATABASE_NAME'),
+        'USER': os.environ.get('DATABASE_USER'),
+        'PASSWORD': os.environ.get('DATABASE_PASSWORD'),
         'HOST': 'drello-mysql-8020.ctq1yaril3q0.ap-northeast-2.rds.amazonaws.com',
         'PORT': '3306',
         'OPTOINS': {
@@ -158,8 +158,18 @@ STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'frontend/build/static')
 ]
 
-AWS_ACCESS_KEY_ID = "AKIA2HPXHNAA7YKUU6U4"
-AWS_SECRET_ACCESS_KEY = "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"
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+CORS_ALLOWED_ORIGINS = [
+    "http://localhost:3000",
+]
+
+STATICFILES_STORAGE = 'config.storage.S3StaticStorage'
+DEFAULT_FILE_STORAGE = 'config.storage.S3MediaStorage'
+
+AWS_ACCESS_KEY_ID = os.environ.get('AWS_ACCESS_KEY_ID')
+AWS_SECRET_ACCESS_KEY = os.environ.get('AWS_SECRET_ACCESS_KEY')
 AWS_S3_REGION_NAME = 'ap-northeast-2'
 AWS_STORAGE_BUCKET_NAME = 'drello-bucket'
 AWS_S3_CUSTOM_DOMAIN = f"{AWS_STORAGE_BUCKET_NAME}.s3.{AWS_S3_REGION_NAME}.amazonaws.com"

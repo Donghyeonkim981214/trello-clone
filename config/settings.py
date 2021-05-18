@@ -148,10 +148,6 @@ USE_L10N = True
 
 USE_TZ = True
 
-CORS_ALLOWED_ORIGINS = [
-    "http://localhost:3000",
-]
-
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
@@ -162,12 +158,15 @@ STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'frontend/build/static')
 ]
 
-# Static files (CSS, JavaScript, Images)
-from pathlib import Path
-STATICFILES_DIRS = [BASE_DIR.parent / 'build' / 'static']
-
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+CORS_ALLOWED_ORIGINS = [
+    "http://localhost:3000",
+]
+
+STATICFILES_STORAGE = 'config.storage.S3StaticStorage'
+DEFAULT_FILE_STORAGE = 'config.storage.S3MediaStorage'
 
 AWS_ACCESS_KEY_ID = os.environ.get('AWS_ACCESS_KEY_ID')
 AWS_SECRET_ACCESS_KEY = os.environ.get('AWS_SECRET_ACCESS_KEY')
@@ -175,9 +174,3 @@ AWS_S3_REGION_NAME = 'ap-northeast-2'
 AWS_STORAGE_BUCKET_NAME = 'drello-bucket'
 AWS_S3_CUSTOM_DOMAIN = f"{AWS_STORAGE_BUCKET_NAME}.s3.{AWS_S3_REGION_NAME}.amazonaws.com"
 AWS_DEFAULT_ACL = 'public-read'
-AWS_LOCATION = 'static'
-STATIC_URL = 'https://%s/%s/' % (AWS_S3_CUSTOM_DOMAIN, AWS_LOCATION)
-STATICFILES_STORAGE = 'config.storage.S3StaticStorage'
-DEFAULT_FILE_STORAGE = 'config.storage.S3MediaStorage'
-MEDIA_URL = 'https://%s.s3.amazonaws.com/media/' % AWS_STORAGE_BUCKET_NAME
-MEDIA_ROOT = MEDIA_URL

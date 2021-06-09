@@ -23,5 +23,5 @@ urlpatterns = [
     path("list_api/", include("lists.urls", namespace='list_api')),
     path("card_api/", include("cards.urls", namespace='card_api')),
     path("users_api/", include('users.urls')),
-    path('', TemplateView.as_view(template_name='index.html')),
+    #path('', TemplateView.as_view(template_name='index.html')),
 ]

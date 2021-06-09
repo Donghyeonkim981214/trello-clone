@@ -5,8 +5,8 @@ import Boards from './Boards';
 export default function Dashboard() {
   return (
     <Fragment>
-      <Boards />
       <Form />
+      <Boards />
     </Fragment>
   );
 }

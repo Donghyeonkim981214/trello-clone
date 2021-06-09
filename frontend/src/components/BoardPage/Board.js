@@ -131,14 +131,17 @@ class TrelloBoard extends PureComponent {
       return <p>Board not found</p>;
     }
     return (
-      <DragDropContext onDragEnd={this.onDragEnd}>
+      <DragDropContext onDragEnd={this.onDragEnd} style={{"overflowX": "scroll", "minHeight": "100vh"}}>
+        <div style={{"margin": "20px"}}>
         <Link to="/">Go Back</Link>
         <h2>{board.title}</h2>
+        </div>
         <Droppable droppableId="all-lists" direction="horizontal" type="list">
           {provided => (
             <ListsContainer
               {...provided.droppableProps}
               ref={provided.innerRef}
+              style={{"overflowX": "scroll", "margin": "20px", "minHeight": "80vh"}}
             >
               {this.props.listsOrder.map((listId, index) => {
                 const list = this.props.lists[listId];
@@ -158,7 +161,7 @@ class TrelloBoard extends PureComponent {
                 }
               })}
               {provided.placeholder}
-              <TrelloCreate list boardId={this.props.board['id']} />
+              <TrelloCreate style="width: 300px;" list boardId={this.props.board['id']} />
             </ListsContainer>
           )}
         </Droppable>

@@ -8,7 +8,6 @@ import Alerts from '../components/layout/Alerts';
 import { HashRouter as Router, Route, Switch, Redirect } from 'react-router-dom';
 import { loadUser } from '../actions/auth';
 import store from "../store/store";
-import Login from "../components/users/Login";
 
 const alertOptions = {
   timeout: 3000,

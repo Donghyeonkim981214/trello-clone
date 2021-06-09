@@ -95,6 +95,7 @@ class TrelloCreate extends React.PureComponent {
     const { text } = this.state;
     const { list } = this.props;
     return this.state.formOpen ? (
+      <div stlye={{"width": "300px"}}>
       <TrelloForm
         list={list}
         text={text}
@@ -105,10 +106,13 @@ class TrelloCreate extends React.PureComponent {
           {list ? "Add List" : "Add Card"}
         </TrelloButton>
       </TrelloForm>
+      </div>
     ) : (
+      <div stlye={{"width": "300px"}}>
       <TrelloOpenForm list={list} onClick={this.openForm}>
         {list ? "Add another list" : "Add another card"}
       </TrelloOpenForm>
+      </div>
     );
   }
 }

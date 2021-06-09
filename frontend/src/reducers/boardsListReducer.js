@@ -20,6 +20,13 @@ const boardsListReducers = (state = initialState, action) => {
             return {...state, boardsList: Object.assign({}, state.boardsList, action.payload['newBoard'])};
         }
 
+        case CONSTANTS.DELETE_BOARD: {
+          const { boardID } = action.payload;
+          const newState = state;
+          delete newState[boardID];
+          return newState;
+        }
+
         default:
             return state;
     }

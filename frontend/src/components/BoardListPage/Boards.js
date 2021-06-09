@@ -3,8 +3,9 @@ import styled from "styled-components";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import PropTypes from 'prop-types';
-import { getBoardsList, getBoardsOrder } from '../../actions';
+import { getBoardsList, getBoardsOrder, deleteBoard } from '../../actions';
 import BoardThumbnail from "./BoardThumnail";
+import Icon from "@material-ui/core/Icon";
 
 const HomeContainer = styled.div`
   display: flex;
@@ -21,6 +22,17 @@ const Thumbnails = styled.div`
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: center;
+`;
+
+const DeleteButton = styled(Icon)`
+  cursor: pointer; 
+  transition: opacity 0.3s ease-in-out;
+  opacity: 0.4;
+  &:hover {
+    opacity: 0.8;
+  }
+  color: black;
+  font-size: 5rem;
 `;
 
 export class Boards extends Component{
@@ -52,6 +64,10 @@ export class Boards extends Component{
         console.log("componentDidMountEnd");
     }
 
+    async handleDeleteBoard(boardid){
+      await this.props.deleteBoard(boardid);
+    };
+
     render() {
       return (
         <Fragment>
@@ -60,13 +76,18 @@ export class Boards extends Component{
                     {this.props.boardsOrder.map(boardID => {
                         const board = this.props.boardsList[boardID];
                         return (
-                            <Link
-                            key={boardID}
-                            to={`/board/${board.id}`}
-                            style={{ textDecoration: "none" }}
-                            >
-                                <BoardThumbnail {...board} />
-                            </Link>
+                            <div>
+                              <Link
+                              key={boardID}
+                              to={`/board/${board.id}`}
+                              style={{ textDecoration: "none" }}
+                              >
+                                  <BoardThumbnail {...board} />
+                              </Link>
+                              <DeleteButton onClick={this.handleDeleteBoard.bind(this, board.id)}>
+                                delete
+                              </DeleteButton>
+                            </div>
                         );
                     })}
                 </Thumbnails>
@@ -84,6 +105,7 @@ export class Boards extends Component{
   const mapDispatchToProps = dispatch => ({
     getBoardsList: () => dispatch(getBoardsList()),
     getBoardsOrder: () => dispatch(getBoardsOrder()),
+    deleteBoard: (boardid) => dispatch(deleteBoard(boardid)),
   });
     
   export default connect(mapStateToProps, mapDispatchToProps)(Boards);

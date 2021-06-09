@@ -63,6 +63,27 @@ export const addBoard = (title) => {
   };
 }
 
+//DELETE BOARD
+export const deleteBoard = (boardid) => {
+  axios.defaults.withCredentials = true;
+  axios.defaults.xsrfCookieName = 'csrftoken';
+  axios.defaults.xsrfHeaderName = 'X-CSRFToken';
+  const pk = boardid.split("-");
+  return async (dispatch, getState) => {
+  console.log("delete a Board in boardAction.js")
+  await axios
+      .delete('/board_api/boards/'+pk[1]+'/', tokenConfig(getState))
+      .then((res) => {
+        dispatch(createMessage({ deleteBoard: 'Board Deleted' }));
+        dispatch({
+          type: CONSTANTS.DELETE_BOARD,
+          payload: res.data,
+      });
+    })
+    .catch((err) => dispatch(returnErrors(err.response.data, err.response.status)));
+  };
+}
+
 //GET BOARD
 export const getBoard = (boardID) => {
   console.log(boardID)

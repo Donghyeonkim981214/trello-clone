@@ -20,6 +20,11 @@ const boardsOrderReducer = (state = initialState, action) => {
       };
     }
 
+    case CONSTANTS.DELETE_BOARD: return {
+      ...state,
+      boardsOrder: state.boardsOrder.filter((board) => board !== action.payload),
+    };
+
     default:
       return state;
   }

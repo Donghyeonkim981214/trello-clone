@@ -45,6 +45,12 @@ class BoardViewSet(viewsets.ModelViewSet):
         serializer = BoardSerializer(board, many=False)
         return Response(serializer.data)
 
+    def destroy(self, request, pk, format=None):
+        deleted_board = Board.objects.get(pk = pk)
+        boardId = deleted_board.string_id
+        self.perform_destroy(deleted_board)
+        return Response(boardId)
+
 class BoardsOrderViewSet(viewsets.ModelViewSet):
     permission_classes = [
         permissions.IsAuthenticated,

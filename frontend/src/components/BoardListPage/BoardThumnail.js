@@ -21,7 +21,10 @@ const Title = styled.h4`
   word-break: break-word;
 `;
 
+
 const BoardThumbnail = ({ title }) => {
+
+
   return (
     <Thumbnail>
       <Title>{title}</Title>

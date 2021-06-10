@@ -37,6 +37,7 @@ fisrt page is login page. If you don't have an account, you have to sign up.
 After logging in, you can create a board to use Drello.
 #### create
 <img width="80%" src="https://user-images.githubusercontent.com/43703346/121494614-dfa11f80-ca13-11eb-8eaf-06d0855a6f1d.gif"/>
+
 #### delete
 <img width="80%" src="https://user-images.githubusercontent.com/43703346/121497840-cf3e7400-ca16-11eb-9ed5-49f4b06cf378.gif"/>
 

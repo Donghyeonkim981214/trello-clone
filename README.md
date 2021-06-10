@@ -44,15 +44,15 @@ After logging in, you can create a board to use Drello.
 ### Drello
 You can access the created board. Create lists and cards to take advantage of Drello's features.
 #### create list
-<img width="80%" src="https://user-images.githubusercontent.com/43703346/121496375-5db1f600-ca15-11eb-8034-4da7094ddb01.gif"/>
+<img width="80%" src="https://user-images.githubusercontent.com/43703346/121496455-715d5c80-ca15-11eb-98c4-0fa7264b0905.gif"/>
 
 #### update list name
-<img width="80%" src="https://user-images.githubusercontent.com/43703346/121496455-715d5c80-ca15-11eb-98c4-0fa7264b0905.gif"/>
+<img width="80%" src="https://user-images.githubusercontent.com/43703346/121496533-8508c300-ca15-11eb-9484-360f91d524ef.gif"/>
 
 #### delete list
 <img width="80%" src="https://user-images.githubusercontent.com/43703346/121496533-8508c300-ca15-11eb-9484-360f91d524ef.gif"/>
 
-#### mode list
+#### move list
 <img width="80%" src="https://user-images.githubusercontent.com/43703346/121496598-94880c00-ca15-11eb-9f1c-a88896e6168e.gif"/>
 
 #### create card
@@ -63,5 +63,5 @@ You can access the created board. Create lists and cards to take advantage of Dr
 #### delete card
 <img width="80%" src="https://user-images.githubusercontent.com/43703346/121496672-a8337280-ca15-11eb-8b47-3547b26aeda0.gif"/>
 
-#### mode card
+#### move card
 <img width="80%" src="https://user-images.githubusercontent.com/43703346/121496770-bbded900-ca15-11eb-99bc-306f41a74556.gif"/>

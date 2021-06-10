@@ -50,12 +50,13 @@ You can access the created board. Create lists and cards to take advantage of Dr
 <img width="80%" src="https://user-images.githubusercontent.com/43703346/121496533-8508c300-ca15-11eb-9484-360f91d524ef.gif"/>
 
 #### delete list
-<img width="80%" src="https://user-images.githubusercontent.com/43703346/121496533-8508c300-ca15-11eb-9484-360f91d524ef.gif"/>
+<img width="80%" src="https://user-images.githubusercontent.com/43703346/121555446-fa908580-ca4d-11eb-98b3-e494bbde1098.gif"/>
 
 #### move list
 <img width="80%" src="https://user-images.githubusercontent.com/43703346/121496598-94880c00-ca15-11eb-9f1c-a88896e6168e.gif"/>
 
 #### create card
+<img width="80%" src="https://user-images.githubusercontent.com/43703346/121555513-0b40fb80-ca4e-11eb-8636-e0b2e1bfa7a0.gif"/>
 
 #### update card task
 <img width="80%" src="https://user-images.githubusercontent.com/43703346/121496713-aff31700-ca15-11eb-88b1-13dc491e5a70.gif"/>

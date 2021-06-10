@@ -23,17 +23,27 @@
   * frontend: html, css, reactJS, react-redux
   * deploy: AWS EB
 
-## 2. 기능 소개
-  *첫 페이지는 로그인화면으로 로그인을 하면 Boardlist 페이지로 이동하고 회원가입이 되어 있지 않으면 Register페이지로 이동해 회원가입을 합니다.
-  *Boardlist페이지에서는 Board생성이 가능하고 새으성한 Board를 클릭하면 해당 Board의 page로 이동합니다.
-  *Board 페이지에서는 List와 Card CRUD가 가능하고 List와 Card의 순서를 drag&drop으로 변경이 가능합니다.
-  *Card의 경우 다른 List로의 이동도 가능합니다.
-  
-## 3. 개발 중
-* 개발 중
-  * 멤버 초대 기능
-* 해결할 이슈
-* 보완할 기능
-  *UI...
-  *card 세부 내용 창 설계
- 
+# Drello
+
+Drello is a project that clones Trllo.
+Drello는 Trllo를 클론한 프로젝트입니다.
+
+## Tech
+
+Drello used the following techniques:
+
+Backend
+- python_version = "3.6"
+- djangorestframework
+- django-rest-knox
+- django-cors-headers
+
+FrontEnd
+- reactJS
+- react-redux
+- bootstrap
+
+## Features
+### Board
+#### create
+<img width="80%" src="https://user-images.githubusercontent.com/43703346/121494614-dfa11f80-ca13-11eb-8eaf-06d0855a6f1d.gif"/>
